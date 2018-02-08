@@ -35,15 +35,17 @@ public class DestroyBricks : MonoBehaviour
         //decrease health according to magnitude of the object that hit us
         Health -= roundedDamage;
         //if health is 0, destroy the block
+
+        healthAfter = Health;
+        healthAfgetrokken = healthBefore - healthAfter;
+        score = score + healthAfgetrokken * scoreMultiplier;
+
         if (Health <= 0)
         {
             Destroy(this.gameObject);
             Health = 0;
+            SetScoreText();
         }
-        healthAfter = Health;
-        healthAfgetrokken = healthBefore - healthAfter;
-        score = score + healthAfgetrokken * scoreMultiplier;
-        SetScoreText();
     }
 
     void SetScoreText()
